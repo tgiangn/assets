@@ -1,9 +1,8 @@
 {
   "sources": [
     {
-      "name": "http://www.people.com.cn/",
+      "name": "people.com.cn",
       "elementid": "rm_topline",
-      "elementclass":"",
       "url":"http://www.people.com.cn/"
     },
     {
