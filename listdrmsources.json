@@ -2,7 +2,7 @@
   "sources": [
     {
       "name": "people.com.cn",
-      "elementid": "rm_topline",
+      "elementclass": "fbold",
       "url":"http://www.people.com.cn/"
     },
     {
