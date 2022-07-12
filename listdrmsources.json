@@ -1,0 +1,14 @@
+{
+  "sources": [
+    {
+      "name": "drm1",
+      "div": "div",
+      "url":"url"
+    },
+    {
+      "name": "drm2",
+      "div": "div2",
+      "url":"url2"
+    }
+  ]
+}
