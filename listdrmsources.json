@@ -1,13 +1,15 @@
 {
   "sources": [
     {
-      "name": "drm1",
-      "div": "div",
-      "url":"url"
+      "name": "http://www.people.com.cn/",
+      "elementid": "rm_topline",
+      "elementclass":"",
+      "url":"http://www.people.com.cn/"
     },
     {
       "name": "drm2",
-      "div": "div2",
+      "elementid": "rm_topline",
+      "elementclass":"",
       "url":"url2"
     }
   ]
