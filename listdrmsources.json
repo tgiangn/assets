@@ -1,15 +1,14 @@
 {
   "sources": [
     {
-      "name": "people.com.cn",
-      "elementclass": "fbold",
-      "url":"http://www.people.com.cn/"
+      "name": "python pandas",
+      "url":"https://www.w3schools.com/python/pandas/default.asp",
+      "index":{"id": "leftmenuinnerinner", 
+               "class": null,
+               "nextsection": {"id":null, 
+                               "class": null
+                              },
+              },
     },
-    {
-      "name": "drm2",
-      "elementid": "rm_topline",
-      "elementclass":"",
-      "url":"url2"
-    }
   ]
 }
