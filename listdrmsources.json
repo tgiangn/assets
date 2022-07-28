@@ -1,19 +1,25 @@
 {
-  "sources": [
-    {
-      "name": "python",
-      "url":"https://www.tutorialspoint.com/python/index.htm",
-      "index":{ "class": "chapters",
-                "nexttag": {"id":null,"class": null}
-              },
-    },
-    {
-      "name": "python pandas",
-      "url":"https://www.w3schools.com/python/pandas/default.asp",
-      "index":{"id": "leftmenuinnerinner",
-               "class": null,
-               "nexttag": {"id":null,"class": null}
-              },
-    }
-  ]
+	"sources": [{
+		"name": "python",
+		"url": "https://www.tutorialspoint.com/python/index.htm",
+		"index": {
+			"class": "chapters",
+			"nexttag": {
+				"id": null,
+				"class": null
+			 }
+		 }
+	},
+     {
+		"name": "pythonpandas",
+		"url": "https://www.w3schools.com/python/pandas/default.asp",
+		"index": {
+			"id": "leftmenuinnerinner",
+			"class": null,
+			"nexttag": {
+				"id": null,
+				"class": null
+			}
+		}
+	}]
 }
