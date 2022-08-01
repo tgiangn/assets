@@ -10,6 +10,17 @@
 			 }
 		 }
 	},
+	{
+		"name": "geeksforgeeks",
+		"url": "https://www.geeksforgeeks.org/",
+		"index": {
+			"class": "articles-list",
+			"nexttag": {
+				"id": null,
+				"class": null
+			 }
+		 }
+	},
      {
 		"name": "pythonpandas",
 		"url": "https://www.w3schools.com/python/pandas/default.asp",
