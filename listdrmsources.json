@@ -1,36 +1,13 @@
 {
-	"sources": [{
-		"name": "python",
-		"url": "https://www.tutorialspoint.com/python",
-		"index": {
-			"class": "chapters",
-			"nexttag": {
-				"id": null,
-				"class": null
-			 }
-		 }
-	},
-	{
-		"name": "geeksforgeeks",
-		"url": "https://www.geeksforgeeks.org",
-		"index": {
-			"class": "articles-list",
-			"nexttag": {
-				"id": null,
-				"class": null
-			 }
-		 }
-	},
-     {
-		"name": "pythonpandas",
-		"url": "https://www.w3schools.com/python/pandas",
-		"index": {
-			"id": "leftmenuinnerinner",
-			"class": null,
-			"nexttag": {
-				"id": null,
-				"class": null
-			}
-		}
-	}]
+  "sources": 
+  [
+    {
+      "name": "python",
+      "url": "https://www.tutorialspoint.com/python",
+      "class": "toc chapters",
+      "next": {
+        "id": "mainContent"
+       }
+    }
+  ]
 }
