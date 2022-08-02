@@ -4,9 +4,11 @@
     {
       "name": "python",
       "url": "https://www.tutorialspoint.com/python",
-      "class": "toc chapters",
+      "tag": "class",
+      "content": "toc chapters",
       "next": {
-        "id": "mainContent"
+        "tag": "id",
+        "content": "mainContent"
        }
     }
   ]
