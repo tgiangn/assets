@@ -2,12 +2,14 @@
 <html lang="en">
     <head></head>
     <body>
-        <div id="labelVideo" style="padding-top: 20px;padding-left:2px;">
+        Test
+        <div id="labelVideo" style="padding-top: 20px;padding-left:2px;margin:auto">
             <video id="webcam" autoplay width="600" height="480"></video>
         </div>
         
         <script>
             const video = document.getElementById("webcam");
+            /*
             navigator.mediaDevices.getUserMedia({audio: false, video:{facingMode:"user"}}).then(function(stream){
                 video.srcObject = stream;
                 video.addEventListener('loaderdata', predictWebcam);
@@ -15,6 +17,39 @@
             function predictWebcam(){
 
             }
+*/
+
+            function getCamera() {
+
+                if (!navigator.mediaDevices && !navigator.mediaDevices.getUserMedia) {
+                    navigator.userMedia = navigator.mozGetUserMedia || navigator.getUserMedia
+                    if (!navigator.userMedia) {
+                    alert("Please Update or Use Different Browser");
+                    return
+                    }
+                    navigator.userMedia({
+                    video: true
+                    }, (stream) => showCam(stream), (err) => showErr(err))
+                    return
+                }
+
+                navigator.mediaDevices.getUserMedia({
+                    video: true
+                    })
+                    .then((stream) => showCam(stream))
+                    .catch((err) => showErr(err))
+            }
+            function showCam(stream) {
+                let video = document.querySelector("video");
+                video.srcObject = stream;
+            }
+
+            function showErr(err) {
+                let message = err.name === "NotFoundError" ? "Please Attach Camera" :
+                err.name === "NotAllowedError" ? "Please Grant Permission to Access Camera" : err
+                alert(message)
+            }
+            getCamera();
         </script>
     </body>
 </html>
