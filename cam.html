@@ -9,14 +9,6 @@
         margin: 2em;
         color: #3D3D3D;
         }
-
-        h1 {
-        font-style: italic;font-size: 5.9vw;
-        color: #FF6F00;
-        }
-        p {
-          font-size: 3.9vw;
-        }
         video {
         display: block;
         }
@@ -60,7 +52,12 @@
         @media all and (max-width: 699px) and (min-width: 520px), (min-width: 1151px) {
            body {
             background: #ccc;
+            font-size: 3.9vw;
           }
+            h1 {
+            font-style: italic;font-size: 5.9vw;
+            color: #FF6F00;
+            }            
         }
 
     </style>
@@ -71,12 +68,12 @@
 </head>
 <body>
     <section id="demos" class="invisible">
-        <h1>Test</h1>
+        <h1>Latest</h1>
         <p>Hold some objects up close to your webcam to get a real-time classification! When ready click "enable webcam" below and accept access to the webcam when the browser asks (check the top left of your window)</p>
         
         <div id="liveView" class="webcam">
           <button id="webcamButton">Enable Webcam</button>
-          <video id="webcam" autoplay width="640" height="480"></video>
+          <video id="webcam" autoplay width="100%" height="480"></video>
         </div>
       </section>
     <script>
