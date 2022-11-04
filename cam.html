@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
     <head></head>
-    <body>
+    <body> Test
         <div id="labelVideo" style="padding: 20px;">
             <video id="webcam" autoplay width="100%"></video>
         </div>
         <script>
-            
-            
             const video = document.getElementById("webcam");
             navigator.mediaDevices.getUserMedia({audio: false, video:{facingMode:"user"}}).then(function(stream){
                 video.srcObject = stream;
