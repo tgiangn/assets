@@ -17,38 +17,6 @@
             function predictWebcam(){
 
             }
-
-            function getCamera() {
-
-                if (!navigator.mediaDevices && !navigator.mediaDevices.getUserMedia) {
-                    navigator.userMedia = navigator.mozGetUserMedia || navigator.getUserMedia
-                    if (!navigator.userMedia) {
-                    alert("Please Update or Use Different Browser");
-                    return
-                    }
-                    navigator.userMedia({
-                    video: true
-                    }, (stream) => showCam(stream), (err) => showErr(err))
-                    return
-                }
-
-                navigator.mediaDevices.getUserMedia({
-                    video: true
-                    })
-                    .then((stream) => showCam(stream))
-                    .catch((err) => showErr(err))
-                function showCam(stream) {
-                    let video = document.querySelector("video");
-                    video.srcObject = stream;
-                    video.play();
-                }
-
-                function showErr(err) {
-                    let message = err.name === "NotFoundError" ? "Please Attach Camera" :
-                    err.name === "NotAllowedError" ? "Please Grant Permission to Access Camera" : err
-                    alert(message)
-                }
-            }
         </script>
 </body>
 </html>
