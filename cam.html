@@ -5,18 +5,18 @@
         <div id="labelVideo" style="padding: 20px;">
             <video id="webcam" autoplay width="100%"></video>
         </div>
-        
         <script>
+            
+            
             const video = document.getElementById("webcam");
-            /*
             navigator.mediaDevices.getUserMedia({audio: false, video:{facingMode:"user"}}).then(function(stream){
                 video.srcObject = stream;
+                video.play();
                 video.addEventListener('loaderdata', predictWebcam);
             });
             function predictWebcam(){
 
             }
-*/
 
             function getCamera() {
 
@@ -37,18 +37,18 @@
                     })
                     .then((stream) => showCam(stream))
                     .catch((err) => showErr(err))
-            }
-            function showCam(stream) {
-                let video = document.querySelector("video");
-                video.srcObject = stream;
-            }
+                function showCam(stream) {
+                    let video = document.querySelector("video");
+                    video.srcObject = stream;
+                    video.play();
+                }
 
-            function showErr(err) {
-                let message = err.name === "NotFoundError" ? "Please Attach Camera" :
-                err.name === "NotAllowedError" ? "Please Grant Permission to Access Camera" : err
-                alert(message)
+                function showErr(err) {
+                    let message = err.name === "NotFoundError" ? "Please Attach Camera" :
+                    err.name === "NotAllowedError" ? "Please Grant Permission to Access Camera" : err
+                    alert(message)
+                }
             }
-            getCamera();
         </script>
-    </body>
+</body>
 </html>
