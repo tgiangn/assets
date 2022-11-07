@@ -64,15 +64,26 @@
         <section id="demos" class="invisible">
           <div id="liveView" class="webcam">
             <button id="webcamButton">Enable Webcam</button>
-            <video id="webcam" autoplay width="640" height="480"></video>
+            <video id="webcam" autoplay width="100%"></video>
           </div>
         </section>        
-        <div id="labelVideo" style="padding-top:20px;padding-left:5px;padding-right:5px;">
-            <video id="webcam" autoplay width="100%"></video>
-        </div>
         <script>
-            const video = document.getElementById("webcam");
+            const video = document.getElementById('webcam');
+            const liveView = document.getElementById('liveView');
+            const demosSection = document.getElementById('demos');
+            const enableWebcamButton = document.getElementById('webcamButton');
+            
+            // Check if webcam access is supported.
+            function getUserMediaSupported() {
+              return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
+            }
 
+            if (getUserMediaSupported()) {
+              enableWebcamButton.addEventListener('click', enableCam);
+            } else {
+              alert('Camera is not supported by your browser');
+            }
+            
             var facingMode = "environment";
             function enableCam(event){
                 video.setAttribute("autoplay", "");
