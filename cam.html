@@ -2,19 +2,10 @@
 <html lang="en">
     <head></head>
     <body>
-        <div id="labelVideo" style="padding: 20px;">
-            <video id="webcam" autoplay width="100%"></video>
+        <div id="labelVideo" style="padding-top:20px;padding-left:5px;padding-right:5px;">
+            <video id="webcam" width="100%"></video>
         </div>
-        <script>
-            const video = document.getElementById("webcam");
-            navigator.mediaDevices.getUserMedia({audio: false, video:{facingMode:"environment"}}).then(function(stream){
-                video.srcObject = stream;
-                video.setAttribute("autoplay", "");
-                video.setAttribute("muted", "");
-                video.setAttribute("playsinline", "");
-                video.play();
-                video.addEventListener('loaderdata', predictWebcam);
-            });
+        <script>const video=document.getElementById("webcam");video.setAttribute("autoplay",""),video.setAttribute("muted",""),video.setAttribute("playsinline",""),navigator.mediaDevices.getUserMedia({audio:!1,video:{facingMode:"environment"}}).then(function(e){video.srcObject=e,video.addEventListener("loaderdata",predictWebcam)}),video.addEventListener("click",function(){"user"==facingMode?facingMode="environment":facingMode="user",constraints={audio:!1,video:{facingMode:facingMode}},navigator.mediaDevices.getUserMedia(constraints).then(function(e){video.srcObject=e})});
             function predictWebcam(){
 
             }
