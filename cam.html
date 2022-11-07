@@ -157,8 +157,9 @@
             var children = [];
 
             function predictWebcam() {
+		    document.getElementById('note').innerText = "Predicting...";
               // Now let's start classifying a frame in the stream.
-              model.detect(video).then(function (predictions) {
+              model.detect(video).catch(function(error) {document.getElementById('note').innerText = error;}).then(function (predictions) {
 		      document.getElementById('note').innerText = "1 predictions" +  predictions.length;
                 // Remove any highlighting we did previous frame.
                 for (let i = 0; i < children.length; i++) {
