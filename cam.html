@@ -48,7 +48,7 @@ body{font-family:helvetica,arial,sans-serif;margin:2em;color:#3d3d3d}h2{font-sty
                 video.setAttribute("muted", "");
                 video.setAttribute("playsinline", "");          
                 video.addEventListener('loaderdata', predictWebcam);  
-                facingMode = "environment";              
+                facingMode = "user";              
                 loadCamera(facingMode);
                 
                 video.addEventListener('click', function() {
