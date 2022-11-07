@@ -8,7 +8,7 @@
         color: #3D3D3D;
         }
 
-        h1 {
+        h2 {
         font-style: italic;
         color: #FF6F00;
         }
@@ -26,7 +26,7 @@
         }
 
         .invisible {
-        opacity: 0.2;
+        	opacity: 0.2;
         }
 
         .camView {
@@ -60,7 +60,7 @@
         
     </head>
     <body>
-        <h1>Wait for the model to load before clicking on the button to enable the camera</h1>
+        <h2 id="note"></h2>
         <section id="demos" class="invisible">
           <div id="liveView" class="webcam">
             <button id="webcamButton">Enable Webcam</button>
@@ -72,24 +72,34 @@
             const liveView = document.getElementById('liveView');
             const demosSection = document.getElementById('demos');
             const enableWebcamButton = document.getElementById('webcamButton');
-            
+            var model = undefined;
+            var facingMode = undefined;
+
             // Check if webcam access is supported.
             function getUserMediaSupported() {
               return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
             }
 
-            if (getUserMediaSupported()) {
-              enableWebcamButton.addEventListener('click', enableCam);
+            if (!getUserMediaSupported()) {
+            	document.getElementById('note').innerText = "Camera is not supported by your browser";
             } else {
-              alert('Camera is not supported by your browser');
+            	document.getElementById('note').innerText = "Wait for the model to load before clicking on the button to enable the camera.";
+            	enableWebcamButton.addEventListener('click', enableCam);
+
+	            cocoSsd.load().then(function (loadedModel) {
+	              model = loadedModel;
+	              demosSection.classList.remove('invisible');
+	              document.getElementById('note').innerText = "Hold some objects up close to your webcam to get a real-time classification.";
+	              
+	            });            	
             }
             
-            var facingMode = "environment";
             function enableCam(event){
                 video.setAttribute("autoplay", "");
                 video.setAttribute("muted", "");
                 video.setAttribute("playsinline", "");          
-                video.addEventListener('loaderdata', predictWebcam);                
+                video.addEventListener('loaderdata', predictWebcam);  
+                facingMode = "environment";              
                 loadCamera(facingMode);
                 
                 video.addEventListener('click', function() {
@@ -102,15 +112,8 @@
             function loadCamera(facingMode){
                 navigator.mediaDevices.getUserMedia({audio: false, video:{facingMode:facingMode}}).then(function(stream){
                     video.srcObject = stream;
-                });                
+                }).catch(function(error) {document.getElementById('note').innerText = error;});                
             }
-            
-            var model = undefined;
-            cocoSsd.load().then(function (loadedModel) {
-              model = loadedModel;
-              // Show demo section now model is ready to use.
-              demosSection.classList.remove('invisible');
-            });
             
             var children = [];
 
