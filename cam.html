@@ -159,6 +159,7 @@
             function predictWebcam() {
               // Now let's start classifying a frame in the stream.
               model.detect(video).then(function (predictions) {
+		      document.getElementById('note').innerText = "1 predictions" +  predictions.length;
                 // Remove any highlighting we did previous frame.
                 for (let i = 0; i < children.length; i++) {
                   liveView.removeChild(children[i]);
@@ -191,7 +192,7 @@
                     children.push(p);
                   }
                 }
-
+		 document.getElementById('note').innerText =  "2 predictions" +  predictions.length;;
                 // Call this function again to keep predicting when the browser is ready.
                 window.requestAnimationFrame(predictWebcam);
               });
