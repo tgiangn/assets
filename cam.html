@@ -88,10 +88,10 @@
         
     </head>
     <body>
-        <h1 id="note"></h1>
+        <h2 id="note"></h2>
         <section id="demos" class="invisible">
           <div id="liveView" class="webcam">
-            <button id="webcamButton">Enable Webcam</button>
+            <button id="webcamButton" style="font-size:4em;">Enable Webcam</button>
             <video id="webcam" autoplay width="100%"></video>
           </div>
         </section>        
@@ -99,6 +99,7 @@
         	//https://cssminifier.org/
         	//https://javascriptbeautifier.org/
         	//https://glitch.com/edit/#!/tensorflow-js-object-detection?path=script.js%3A147%3A56
+        	//https://codelabs.developers.google.com/codelabs/tensorflowjs-object-detection/#7
 
             const video = document.getElementById('webcam');
             const liveView = document.getElementById('liveView');
@@ -137,35 +138,36 @@
                 video.setAttribute("muted", "");
                 video.setAttribute("playsinline", "");          
 
-                facingMode = "user";              
-                loadCamera(facingMode);
+                facingMode = "user";
+                navigator.mediaDevices.getUserMedia({audio: false, video:{facingMode:facingMode}}).then(function(stream){
+                    video.srcObject = stream;
+                    video.addEventListener('loaderdata', predictWebcam);  
+                }).catch(function(error) {document.getElementById('note').innerText = error;});      
                 
                 video.addEventListener('click', function() {
                   if (facingMode == "user") { facingMode = "environment";} 
                   else {facingMode = "user";}
-                  loadCamera(facingMode);
+                  navigator.mediaDevices.getUserMedia({audio: false, video:{facingMode:facingMode}}).then(function(stream){
+	                    video.srcObject = stream;
+	              }).catch(function(error) {document.getElementById('note').innerText = error;});      
                 });
             }
-            
-            function loadCamera(facingMode){
-                navigator.mediaDevices.getUserMedia({audio: false, video:{facingMode:facingMode}}).then(function(stream){
-                    video.srcObject = stream;
-                    video.addEventListener('loaderdata', predictWebcam);  
-                }).catch(function(error) {document.getElementById('note').innerText = error;});                
-            }
+
             
             var children = [];
+            var preindex = 0;
 
             function predictWebcam() {
-		    document.getElementById('note').innerText = "Predicting...";
+            	document.getElementById('note').innerText = "predicting " + (preindex++);
               // Now let's start classifying a frame in the stream.
               model.detect(video).catch(function(error) {document.getElementById('note').innerText = error;}).then(function (predictions) {
-		      document.getElementById('note').innerText = "1 predictions" +  predictions.length;
+				
                 // Remove any highlighting we did previous frame.
                 for (let i = 0; i < children.length; i++) {
                   liveView.removeChild(children[i]);
                 }
                 children.splice(0);
+                document.getElementById('note').innerText = "predictions "+ preindex +" "+ predictions.length;
 
                 // Now lets loop through predictions and draw them to the live view if
                 // they have a high confidence score.
@@ -193,7 +195,8 @@
                     children.push(p);
                   }
                 }
-		 document.getElementById('note').innerText =  "2 predictions" +  predictions.length;;
+                document.getElementById('note').innerText = "predicting again";
+
                 // Call this function again to keep predicting when the browser is ready.
                 window.requestAnimationFrame(predictWebcam);
               });
