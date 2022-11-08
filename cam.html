@@ -4,12 +4,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 </head>
 <body>
-	<p id="a"></p>
 <script type="text/javascript">
-a.innerText = screen.width + 'px';
 	var video = document.createElement('video');
-	video.style.width = screen.width + 'px';
-	//video.style.height = document.height + 'px';
+	video.style.width = '100%';
+	//video.style.height = screen.height + 'px';
 	video.setAttribute('autoplay', '');
 	video.setAttribute('muted', '');
 	video.setAttribute('playsinline', '');
@@ -21,7 +19,7 @@ a.innerText = screen.width + 'px';
 	   facingMode: facingMode
 	  }
 	}
-	navigator.mediaDevices.getUserMedia(constraints).then(function success(stream) {video.srcObject = stream;});
+	navigator.mediaDevices.getUserMedia(constraints).catch(function(error) {alert(error);}.then(function success(stream) {video.srcObject = stream;});
 	document.body.appendChild(video);
 
 	video.addEventListener('click', function() {
