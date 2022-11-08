@@ -19,7 +19,7 @@
 	   facingMode: facingMode
 	  }
 	}
-	navigator.mediaDevices.getUserMedia(constraints).catch(function(error) {alert(error);}.then(function success(stream) {video.srcObject = stream;});
+	navigator.mediaDevices.getUserMedia(constraints).catch(function(error) {alert(error);}).then(function success(stream) {video.srcObject = stream;});
 	document.body.appendChild(video);
 
 	video.addEventListener('click', function() {
