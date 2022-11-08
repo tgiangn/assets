@@ -128,11 +128,11 @@
             }
             
             function enableCam(event){
-				if (!model) {
-					document.getElementById('note').innerText = 'Wait! Model not loaded yet.';
-					return;
-				}
-				event.target.classList.add('removed');  
+                if (!model) {
+                	document.getElementById('note').innerText = 'Wait! Model not loaded yet.';
+                	return;
+                }
+                event.target.classList.add('removed');  
 
                 video.setAttribute("autoplay", "");
                 video.setAttribute("muted", "");
