@@ -23,17 +23,26 @@ body{font-size:18px;line-height:26px}
 h1{font-size:36px;line-height:46px}
 }
 </style>
+        <script type="text/javascript">
+            function isRetinaDisplay() {
+                if (window.matchMedia) {
+                    var mq = window.matchMedia("only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 2.6/2), only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen  and (min-device-pixel-ratio: 1.3), only screen and (min-resolution: 1.3dppx)");
+                    return (mq && mq.matches || (window.devicePixelRatio > 1));
+                }
+            }
+            if(isRetinaDisplay()) alert("isRetinaDisplay()");
+            else alert("is not RetinaDisplay()");
+    </script>            
 </head>
 <body>
 <section id="retina">
     <h1>Woohoo! Yes,<br> you have a Retina display.</h1>
-    <p><strong>Retina Display</strong> or <strong>Retina Resolution Screens</strong> are product names used by Apple for screens that have a <strong>higher pixel density</strong> than other displays. Later they are also called <strong>Retina HD Displays</strong>. The terms are used for several Apple products, including the iPhone, iPod Touch, iPad, MacBook (2015 version), MacBook Pro, iPad Mini, iPad Air and iMac. The displays have so many <strong>pixel per inch</strong> that the human eye can't see the dots or pixels anymore so the <strong>high-resolution display</strong> looks really sharp.</p>
-    <p>Because the typical viewing distance is different, depending on each device's use, the pixels per inch claiming to be of Retina quality can differ, depending on the size of the display, with <strong>higher PPI</strong> for smaller displays and lower PPI for larger displays. Later device versions have an even higher quality improvement, either counted by an increase in the PPI (the iPhone 6 Plus) and/or by an increase in the number of pixels (the iPhone 6 and 6 Plus, and iMac With Retina 5K Display), thus Apple using the name "Retina HD Display" or "Retina 5K Display".</p>
 </section>
 <section id="non-retina">
     <h1 id="not-retina">No,<br> your screen is sadly not a Retina display.</h1>
+</section>
     <p><strong>Retina Display</strong>, <strong>Retina Resolution Screens</strong> or later <strong>Retina HD Display</strong> are brand names used by Apple for screens that have a <strong>higher pixel density</strong> than other displays. The terms are used for several Apple products, including the iPhone, iPod Touch, iPad, MacBook (2015 version), MacBook Pro, iPad Mini, iPad Air and iMac. The displays have so many <strong>pixel per inch</strong> that the human eye can't see the dots or pixels anymore so the <strong>high-resolution display</strong> looks really sharp.</p>
     <p>Because the typical viewing distance is different, depending on each device's use, the pixels per inch claiming to be of Retina quality can differ, depending on the size of the display, with <strong>higher PPI</strong> for smaller displays and lower PPI for larger displays. Later device versions have an even higher quality improvement, either counted by an increase in the PPI (the iPhone 6 Plus) and/or by an increase in the number of pixels (the iPhone 6 and 6 Plus, and iMac With Retina 5K Display), thus Apple using the name "Retina HD Display" or "Retina 5K Display". Retina is a trademark of Apple Inc., registered in the U.S. and possibly other countries. <sub><a href="#reference">[1]</a></sub></p>
-</section>
+
 </body>
 </html>
