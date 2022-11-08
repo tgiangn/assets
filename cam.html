@@ -6,10 +6,10 @@
 <body>
 	<p id="a"></p>
 <script type="text/javascript">
-
+a.innerText = screen.width + 'px';
 	var video = document.createElement('video');
-	video.style.width = document.width + 'px';
-	video.style.height = document.height + 'px';
+	video.style.width = screen.width + 'px';
+	//video.style.height = document.height + 'px';
 	video.setAttribute('autoplay', '');
 	video.setAttribute('muted', '');
 	video.setAttribute('playsinline', '');
