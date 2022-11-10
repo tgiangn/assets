@@ -2,13 +2,18 @@
 <html lang="en">
     <head>
 	    <style>
-			em{font-weight:500}body{font-family:helvetica,arial,sans-serif;color:#3d3d3d}
-			h1{font-style:italic;color:#ff6f00;font-size:2em;clear:both}
-			video{clear:both;display:block}section{opacity:1;transition:opacity .5s ease-in-out}
-			.removed{display:none}.invisible{opacity:.2}
-			.videoView{position:relative;float:left;width:100%;margin:2% 1%;cursor:pointer}
-			.videoView p{position:absolute;padding:5px;background-color:rgba(255,111,0,.85);color:#fff;border:1px dashed rgba(255,255,255,.7);z-index:2;font-size:14px;margin:0}
-			.highlighter{background:rgba(0,255,0,.25);border:1px dashed #fff;z-index:1;position:absolute}
+            em{font-weight:500}body{font-family:helvetica,arial,sans-serif;color:#3d3d3d}
+            h1{font-style:italic;color:#ff6f00;font-size:2em;}
+            h1{clear: both;}
+            video{clear:both;display:block}
+            
+            .removed{display:none}.invisible{opacity:.2}
+            .videoView{position:relative;float:left;width:100%;cursor:pointer}
+            .videoView p{position:absolute;padding:5px;background-color:rgba(255,111,0,.85);color:#fff;border:1px dashed rgba(255,255,255,.7);z-index:2;font-size:14px;margin:0}
+            .highlighter{background:rgba(0,255,0,.25);border:1px dashed #fff;z-index:1;position:absolute}
+
+
+            section{opacity:1;transition:opacity .5s ease-in-out;}
             @media
                 only screen and (-webkit-min-device-pixel-ratio: 2),
                 only screen and (   min--moz-device-pixel-ratio: 2),
@@ -32,7 +37,7 @@
             <button id="webcamButton" style="font-size:3em;">Enable Webcam</button>
             <video id="webcam" autoplay muted width="100%"></video>
           </div>
-        </section>        
+        </section>      
         <script type="text/javascript">
             function isRetinaDisplay() {
                 if (window.matchMedia) {
@@ -85,7 +90,7 @@
                 navigator.mediaDevices.getUserMedia({audio: false, video:{facingMode:facingMode}}).then(function(stream){
                     video.srcObject = stream;
                     video.addEventListener('loadeddata', predictWebcam);  
-                }).catch(function(error) {document.getElementById('msgid').innerText = error;});      
+                }).catch(function(error) {alert(error);});      
                 
                 video.addEventListener('click', function() {
                   if (facingMode == "user") facingMode = "environment";
