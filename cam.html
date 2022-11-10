@@ -119,16 +119,19 @@
                     p.innerText = predictions[n].class  + ' - with ' 
                         + Math.round(parseFloat(predictions[n].score) * 100) 
                         + '% confidence.';
-                    p.style = 'margin-left: ' + predictions[n].bbox[0] + 'px; margin-top: '
-                        + (predictions[n].bbox[1] - 10) + 'px; width: ' 
-                        + (predictions[n].bbox[2] - 10) + 'px; top: 0; left: 0;';
+                    let box = predictions[n].bbox;
+                    if(isRetinaDisplay)
+                        box = box.map(e => e*2);
+                    p.style = 'margin-left: ' + box[0] + 'px; margin-top: '
+                        + (box[1] - 10) + 'px; width: ' 
+                        + (box[2] - 10) + 'px; top: 0; left: 0;';
 
                     const highlighter = document.createElement('div');
                     highlighter.setAttribute('class', 'highlighter');
-                    highlighter.style = 'left: ' + predictions[n].bbox[0] + 'px; top: '
-                        + predictions[n].bbox[1] + 'px; width: ' 
-                        + predictions[n].bbox[2] + 'px; height: '
-                        + predictions[n].bbox[3] + 'px;';
+                    highlighter.style = 'left: ' + box[0] + 'px; top: '
+                        + box[1] + 'px; width: ' 
+                        + box[2] + 'px; height: '
+                        + box[3] + 'px;';
 
                     liveView.appendChild(highlighter);
                     liveView.appendChild(p);
